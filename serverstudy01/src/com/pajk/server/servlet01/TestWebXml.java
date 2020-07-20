@@ -8,12 +8,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestWebXml {
 
-    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         /*
         1.获取SAX解析工厂方法
         2.从工厂方法中获取解析器
@@ -25,12 +26,17 @@ public class TestWebXml {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         SAXParser saxParser = saxParserFactory.newSAXParser();
         WebHandleTest webHandleTest = new WebHandleTest();
-        saxParser.parse(Thread.currentThread().getContextClassLoader().getResourceAsStream("com/pajk/server/servlet/web.xml"),webHandleTest);
+        saxParser.parse(Thread.currentThread().getContextClassLoader().getResourceAsStream("com/pajk/server/servlet01/web.xml"),webHandleTest);
         // 获取数据
-        List<EntityTest> entityTests = webHandleTest.getEntityTests();
-        List<MappingTest> mappingTests = webHandleTest.getMappingTests();
-        System.out.println(entityTests.size());
-        System.out.println(mappingTests.size());
+
+        WebContext webContext = new WebContext(webHandleTest.getEntityTests(),webHandleTest.getMappingTests());
+        // 假设 输入/login
+        String className = webContext.getClz("/reg");
+        Class clz = Class.forName(className);
+        ServletInterface ser = (ServletInterface)clz.getConstructor().newInstance();
+        System.out.println(ser);
+        ser.service();
+
     }
 }
 
@@ -75,7 +81,7 @@ class WebHandleTest extends DefaultHandler {
             }else{
                 if(tag.equals("servlet-name")){
                     entityTest.setName(contents);
-                }else if(tag.equals("server-class")){
+                }else if(tag.equals("servlet-class")){
                     entityTest.setClz(contents);
                 }
             }
@@ -91,6 +97,7 @@ class WebHandleTest extends DefaultHandler {
                 mappingTests.add(mappingTest);
             }
         }
+        tag = null;
 
     }
 

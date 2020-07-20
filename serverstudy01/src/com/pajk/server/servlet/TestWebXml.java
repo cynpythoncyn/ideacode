@@ -29,6 +29,9 @@ public class TestWebXml {
         // 获取数据
         List<EntityTest> entityTests = webHandleTest.getEntityTests();
         List<MappingTest> mappingTests = webHandleTest.getMappingTests();
+        for(EntityTest entityTest:entityTests){
+            System.out.println(entityTest.getName()+"类名"+entityTest.getClz());
+        }
         System.out.println(entityTests.size());
         System.out.println(mappingTests.size());
     }
@@ -74,8 +77,10 @@ class WebHandleTest extends DefaultHandler {
             }else{
                 if(tag.equals("servlet-name")){
                     entityTest.setName(contents);
-                }else if(tag.equals("server-class")){
-                    entityTest.setClz(contents);
+                }else if(tag.equals("servlet-class")){
+                    if(contents.length()>0){
+                        entityTest.setClz(contents);
+                    }
                 }
             }
         }
@@ -90,7 +95,7 @@ class WebHandleTest extends DefaultHandler {
                 mappingTests.add(mappingTest);
             }
         }
-
+        tag = null;
     }
 
 
