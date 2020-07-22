@@ -1,5 +1,7 @@
 package com.pajk.server.server01;
 
+import sun.security.krb5.internal.crypto.RsaMd5CksumType;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,42 +38,21 @@ public class ServerTest {
             String requestInfo = new String(datas,0,len);
             System.out.println(requestInfo);
 
-            // 返回响应
-            StringBuilder content = new StringBuilder();
-            content.append("<html>");
-            content.append("<head>");
-            content.append("<title>");
-            content.append("服务器响应成功");
-            content.append("</title>");
-            content.append("</head>");
-            content.append("<body>");
-            content.append("数据响应了");
-            content.append("</body>");
-            content.append("<html>");
-            int size = content.toString().getBytes().length;
-            StringBuilder responseInfo = new StringBuilder();
-            String blank = " ";
-            String CRLF = "\r\n";
-            // 响应头 HTTP/1.1 200 OK
-            responseInfo.append("HTTP/1.1").append(blank);
-            responseInfo.append(200).append(blank);
-            responseInfo.append("OK").append(CRLF);
-
-            // 响应行(最后一行存在空格)
-            responseInfo.append("Date:").append(new Date()).append(CRLF);
-            responseInfo.append("Server:").append("12314212").append(CRLF);
-            responseInfo.append("Content-Type: application/x-www-form-urlencoded; charset=UTF-8").append(CRLF);
-            responseInfo.append("Content-Length:").append(size).append(CRLF);
-            responseInfo.append(CRLF);
-
-            // 响应正文
-            responseInfo.append(content.toString());
-
-            // 写入到客户端
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(clint.getOutputStream()));
-            bw.write(responseInfo.toString());
-            bw.flush();
-
+            // 返回响应内容
+            // 关注了内容
+            ResponseTest responseTest = new ResponseTest(clint);
+            responseTest.responseTestLn("<html>");
+            responseTest.responseTestLn("<head>");
+            responseTest.responseTestLn("<title>");
+            responseTest.responseTestLn("服务器响应成功");
+            responseTest.responseTestLn("</title>");
+            responseTest.responseTestLn("</head>");
+            responseTest.responseTestLn("<body>");
+            responseTest.responseTestLn("数据响应了");
+            responseTest.responseTestLn("</body>");
+            responseTest.responseTestLn("<html>");
+            // 关注了状态码
+            responseTest.pushToBrower(200);
 
         } catch (IOException e) {
             e.printStackTrace();
