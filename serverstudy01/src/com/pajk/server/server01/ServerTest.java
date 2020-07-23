@@ -28,19 +28,21 @@ public class ServerTest {
     public void recevice(){
 
         try {
-            Socket clint = serverSocket.accept();
+            Socket client = serverSocket.accept();
             System.out.println("一个客户端建立了连接-------");
 
             // 获取请求协议
-            InputStream inputStream = clint.getInputStream();
-            byte[] datas = new byte[1024*1024];
-            int len = inputStream.read(datas);
-            String requestInfo = new String(datas,0,len);
-            System.out.println(requestInfo);
+//            InputStream inputStream = clint.getInputStream();
+//            byte[] datas = new byte[1024*1024];
+//            int len = inputStream.read(datas);
+//            String requestInfo = new String(datas,0,len);
+//            System.out.println(requestInfo);
+            RequestTest requestTest = new RequestTest(client);
+            requestTest.parseRequestInfo();
 
             // 返回响应内容
             // 关注了内容
-            ResponseTest responseTest = new ResponseTest(clint);
+            ResponseTest responseTest = new ResponseTest(client);
             responseTest.responseTestLn("<html>");
             responseTest.responseTestLn("<head>");
             responseTest.responseTestLn("<title>");
