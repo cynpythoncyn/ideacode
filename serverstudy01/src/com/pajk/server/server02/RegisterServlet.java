@@ -1,0 +1,10 @@
+package com.pajk.server.server02;
+
+public class RegisterServlet implements ServletInterface {
+
+    @Override
+    public void service(RequestTest requestTest,ResponseTest responseTest) {
+        System.out.println("RegisterServlet注册");
+        responseTest.responseTestLn("注册成功");
+    }
+}
