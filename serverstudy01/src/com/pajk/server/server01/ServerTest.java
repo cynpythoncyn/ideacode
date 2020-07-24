@@ -50,7 +50,7 @@ public class ServerTest {
             responseTest.responseTestLn("</title>");
             responseTest.responseTestLn("</head>");
             responseTest.responseTestLn("<body>");
-            responseTest.responseTestLn("数据响应了");
+            responseTest.responseTestLn("数据响应了"+requestTest.getParameter("age"));
             responseTest.responseTestLn("</body>");
             responseTest.responseTestLn("<html>");
             // 关注了状态码
