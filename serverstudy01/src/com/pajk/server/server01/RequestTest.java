@@ -36,6 +36,8 @@ public class RequestTest {
             e.printStackTrace();
             return;
         }
+        // 调用分解请求信息方法
+        parseRequestInfo();
     }
 
     // 分解请求信息
