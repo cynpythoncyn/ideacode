@@ -1,8 +1,9 @@
-package com.pajk.server.servlet01;
+package com.pajk.server.server02;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 /**
 将list数据格式转换成Map格式
  */

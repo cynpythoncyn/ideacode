@@ -48,7 +48,7 @@ public class RequestTest {
         // 2.获取请求URL
         int startIdx = this.requestInfo.indexOf("/") + 1;
         int endIdx = this.requestInfo.indexOf("HTTP/");
-        this.url = this.requestInfo.substring(startIdx,endIdx);
+        this.url = this.requestInfo.substring(startIdx,endIdx).trim();
         // 获取？号的位置
         int queryIdx = this.url.indexOf("?");
         if(queryIdx >= 0){

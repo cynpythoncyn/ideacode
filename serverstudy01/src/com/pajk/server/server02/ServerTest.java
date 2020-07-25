@@ -28,17 +28,18 @@ public class ServerTest {
             RequestTest requestTest = new RequestTest(client);
             // 返回响应内容
             ResponseTest responseTest = new ResponseTest(client);
-            ServletInterface servlet = null;
-            if(requestTest.getUrl().equals("login")){
-                servlet = new LoginServlet();
+            System.out.println(requestTest.getUrl());
+            ServletInterface servlet = WebApp.getServletFormUrl(requestTest.getUrl());
+
+            if(null!=servlet){
                 servlet.service(requestTest,responseTest);
-            }else if(requestTest.getUrl().equals("reg")){
-                servlet = new RegisterServlet();
-                servlet.service(requestTest,responseTest);
+                responseTest.pushToBrower(200);
+            }else{
+                System.out.println("错误的页面");
+                responseTest.pushToBrower(404);
             }
 
             // 关注了状态码
-            responseTest.pushToBrower(200);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,7 +47,6 @@ public class ServerTest {
         }
 
     }
-
     public void stop(){
 
     }

@@ -1,50 +1,18 @@
-package com.pajk.server.servlet01;
+package com.pajk.server.server02;
+
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-
-public class TestWebXml {
-
-    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        /*
-        1.获取SAX解析工厂方法
-        2.从工厂方法中获取解析器
-        3.编写处理器
-        4.加载文档，注册处理器
-        5.解析
-        6.获取数据
-         */
-        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-        SAXParser saxParser = saxParserFactory.newSAXParser();
-        WebHandleTest webHandleTest = new WebHandleTest();
-        saxParser.parse(Thread.currentThread().getContextClassLoader().getResourceAsStream("com/pajk/server/servlet01/web.xml"),webHandleTest);
-        // 获取数据
-
-        WebContext webContext = new WebContext(webHandleTest.getEntityTests(),webHandleTest.getMappingTests());
-        // 假设 输入/login
-        String className = webContext.getClz("/reg");
-        Class clz = Class.forName(className);
-        ServletInterface ser = (ServletInterface)clz.getConstructor().newInstance();
-        System.out.println(ser);
-        ser.service();
-
-    }
-}
 
 /**
  * xml文件的处理器
  */
 
-class WebHandleTest extends DefaultHandler {
+public class WebHandleTest extends DefaultHandler {
     private List<EntityTest> entityTests;
     private List<MappingTest> mappingTests;
     private EntityTest entityTest;
