@@ -45,7 +45,8 @@ public class WebApp {
             ServletInterface ser = (ServletInterface)clz.getConstructor().newInstance();
             return ser;
         } catch (Exception e) {
-            e.printStackTrace();
+            // 当输入一个不存在的URL时，不打印错误信息，
+//            e.printStackTrace();
         }
         return null;
     }
