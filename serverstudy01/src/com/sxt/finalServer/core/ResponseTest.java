@@ -1,4 +1,4 @@
-package com.pajk.server.server01;
+package com.sxt.finalServer.core;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -48,10 +48,10 @@ public class ResponseTest {
             code = 500;
         }
         creatHeaderInfo(code);
-        bw.append(content);
-        bw.append(responseInfo);
-//        responseInfo.append(content.toString());
-//        bw.write(responseInfo.toString());
+//        bw.append(content);
+//        bw.append(responseInfo);
+        responseInfo.append(content.toString());
+        bw.write(responseInfo.toString());
         bw.flush();
     }
 
@@ -75,7 +75,7 @@ public class ResponseTest {
         // 响应行(最后一行存在空格)
         responseInfo.append("Date:").append(new Date()).append(CRLF);
         responseInfo.append("Server:").append("shsxt Server/0.0.1;charset=GBK").append(CRLF);
-        responseInfo.append("Content-Type: application/x-www-form-urlencoded").append(CRLF);
+        responseInfo.append("Content-Type:text/html").append(CRLF);
         responseInfo.append("Content-Length:").append(size).append(CRLF);
         responseInfo.append(CRLF);
 
