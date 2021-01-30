@@ -8,9 +8,9 @@
 
     <environments default="development">
         <environment id="development">
-            <!--使用JDBC事务管理器-->
+            <!--使用JDBC事务管理器  还有一个type：MANGAGED-->
             <transactionManager type="JDBC"/>
-            <!--配置数据库连接的信息 -->
+            <!--配置数据库连接的信息 type:UNPOOLED,JNDI-->
             <dataSource type="POOLED">
                 <!--使用${}获取配置文件db.properties中配置的字段 -->
                 <property name="driver" value="${driver}"/>

@@ -3,6 +3,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.Logger;
 import pojo.TbUser;
 
 
@@ -13,19 +14,22 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-
 /**
  * @author chenyanan
  * @Date 2021/1/9
  */
 public class TestMabatis {
     public static void main(String[] args) throws IOException {
+        Logger logger = Logger.getLogger(TestMabatis.class);
+        logger.debug("print debug 日志");
+
         TestMabatis testMabatis = new TestMabatis();
 
-//        testMabatis.testQueryById();
+        testMabatis.testQueryById();
+        logger.debug("testmabatis.testQueryByid 执行");
 //        testMabatis.testInsertUser();
-        testMabatis.testUpdateUser();
-        testMabatis.testselectAll();
+//        testMabatis.testUpdateUser();
+//        testMabatis.testselectAll();
 
 
     }
