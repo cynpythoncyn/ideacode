@@ -1,0 +1,18 @@
+2021-01-30 21:44:57  - [ DEBUG ]  TestMabatis.main(TestMabatis.java:24) TestMabatis main - print debug 日志 
+ 2021-01-30 21:56:37  - [ DEBUG ]  TestMabatis.main(TestMabatis.java:24) TestMabatis main - print debug 日志 
+ 2021-01-30 21:56:37  - [ DEBUG ]  org.apache.ibatis.logging.LogFactory.setImplementation(LogFactory.java:105) org.apache.ibatis.logging.LogFactory main - Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter. 
+ 2021-01-30 21:56:37  - [ DEBUG ]  org.apache.ibatis.datasource.pooled.PooledDataSource.forceCloseAll(PooledDataSource.java:353) org.apache.ibatis.datasource.pooled.PooledDataSource main - PooledDataSource forcefully closed/removed all connections. 
+ 2021-01-30 21:56:37  - [ DEBUG ]  org.apache.ibatis.datasource.pooled.PooledDataSource.forceCloseAll(PooledDataSource.java:353) org.apache.ibatis.datasource.pooled.PooledDataSource main - PooledDataSource forcefully closed/removed all connections. 
+ 2021-01-30 21:56:37  - [ DEBUG ]  org.apache.ibatis.datasource.pooled.PooledDataSource.forceCloseAll(PooledDataSource.java:353) org.apache.ibatis.datasource.pooled.PooledDataSource main - PooledDataSource forcefully closed/removed all connections. 
+ 2021-01-30 21:56:37  - [ DEBUG ]  org.apache.ibatis.datasource.pooled.PooledDataSource.forceCloseAll(PooledDataSource.java:353) org.apache.ibatis.datasource.pooled.PooledDataSource main - PooledDataSource forcefully closed/removed all connections. 
+ 2021-01-30 21:56:37  - [ DEBUG ]  org.apache.ibatis.transaction.jdbc.JdbcTransaction.openConnection(JdbcTransaction.java:136) org.apache.ibatis.transaction.jdbc.JdbcTransaction main - Opening JDBC Connection 
+ 2021-01-30 21:56:38  - [ DEBUG ]  org.apache.ibatis.datasource.pooled.PooledDataSource.popConnection(PooledDataSource.java:424) org.apache.ibatis.datasource.pooled.PooledDataSource main - Created connection 1423561005. 
+ 2021-01-30 21:56:38  - [ DEBUG ]  org.apache.ibatis.transaction.jdbc.JdbcTransaction.setDesiredAutoCommit(JdbcTransaction.java:100) org.apache.ibatis.transaction.jdbc.JdbcTransaction main - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@54d9d12d] 
+ 2021-01-30 21:56:38  - [ DEBUG ]  org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) mapper.TbUserMapper.queryById main - ==>  Preparing: SELECT * FROM tb_user WHERE ID=?  
+ 2021-01-30 21:56:38  - [ DEBUG ]  org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) mapper.TbUserMapper.queryById main - ==> Parameters: 7(Integer) 
+ 2021-01-30 21:56:38  - [ DEBUG ]  org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) mapper.TbUserMapper.queryById main - <==      Total: 1 
+ 2021-01-30 21:56:38  - [ DEBUG ]  org.apache.ibatis.transaction.jdbc.JdbcTransaction.resetAutoCommit(JdbcTransaction.java:122) org.apache.ibatis.transaction.jdbc.JdbcTransaction main - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@54d9d12d] 
+ 2021-01-30 21:56:38  - [ DEBUG ]  org.apache.ibatis.transaction.jdbc.JdbcTransaction.close(JdbcTransaction.java:90) org.apache.ibatis.transaction.jdbc.JdbcTransaction main - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@54d9d12d] 
+ 2021-01-30 21:56:38  - [ DEBUG ]  org.apache.ibatis.datasource.pooled.PooledDataSource.pushConnection(PooledDataSource.java:381) org.apache.ibatis.datasource.pooled.PooledDataSource main - Returned connection 1423561005 to pool. 
+ 2021-01-30 21:56:38  - [ DEBUG ]  TestMabatis.main(TestMabatis.java:29) TestMabatis main - testmabatis.testQueryByid 执行 
+ 
